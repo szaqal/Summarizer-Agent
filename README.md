@@ -102,3 +102,6 @@ Run once to add the `summary` and `summarized_at` columns to `rss_items`:
 ```bash
 psql "$DATABASE_URL" -f db_migration.sql
 ```
+
+
+Deliver message `./signal-cli -a  SENDER send -m message RECIPIENT`
