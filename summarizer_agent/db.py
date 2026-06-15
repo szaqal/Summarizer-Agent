@@ -8,7 +8,7 @@ def fetch_unsummarized() -> list[tuple[int, str, str, object]]:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT id, title, url, published_date FROM rss_items"
-                " WHERE summary IS NULL AND fetch_error IS NULL ORDER BY id LIMIT 100"
+                " WHERE summary IS NULL AND fetch_error IS NULL ORDER BY id LIMIT 20"
             )
             return cur.fetchall()
 
