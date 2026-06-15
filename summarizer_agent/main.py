@@ -1,8 +1,8 @@
 import sys
 import time
 
-from summarizer_agent.db import fetch_unsummarized, store_summary
-from summarizer_agent.fetcher import get_text
+from summarizer_agent.db import fetch_unsummarized, store_fetch_error, store_summary
+from summarizer_agent.fetcher import PermanentFetchError, get_text
 from summarizer_agent.notifier import send
 from summarizer_agent.summarizer import summarize
 
@@ -22,6 +22,9 @@ def main() -> None:
             store_summary(article_id, summary)
             collected.append((title, url, summary, published_date))
             print(f"OK  {url}", file=sys.stderr)
+        except PermanentFetchError as exc:
+            store_fetch_error(article_id, exc.status_code)
+            print(f"SKIP (permanent) {url}: {exc}", file=sys.stderr)
         except Exception as exc:
             print(f"SKIP {url}: {exc}", file=sys.stderr)
         time.sleep(8)
