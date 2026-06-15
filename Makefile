@@ -15,5 +15,5 @@ install:
 	python3 -m venv .venv
 	.venv/bin/pip install -r requirements.txt
 
-run: install
+run:
 	PATH=./bin:$$PATH .venv/bin/python -m summarizer_agent.main
