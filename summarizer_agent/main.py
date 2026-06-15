@@ -24,7 +24,7 @@ def main() -> None:
             print(f"OK  {url}", file=sys.stderr)
         except Exception as exc:
             print(f"SKIP {url}: {exc}", file=sys.stderr)
-        time.sleep(2)
+        time.sleep(8)
 
     if collected:
         send(collected)
