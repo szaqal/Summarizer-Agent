@@ -5,7 +5,7 @@ from langchain_mistralai import ChatMistralAI
 from summarizer_agent.config import MISTRAL_API_KEY
 
 _prompt = ChatPromptTemplate.from_template(
-    "Summarize the following article in 3-5 sentences in the same language as the article:\n\n{text}"
+    "Summarize the following article in 3-5 sentences in the same language as the article. Use plain text only, no markdown formatting.\n\n{text}"
 )
 _llm = ChatMistralAI(model="mistral-small-latest", api_key=MISTRAL_API_KEY)
 _chain = _prompt | _llm | StrOutputParser()
