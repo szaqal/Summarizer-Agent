@@ -1,0 +1,3 @@
+ALTER TABLE articles
+  ADD COLUMN IF NOT EXISTS summary       TEXT,
+  ADD COLUMN IF NOT EXISTS summarized_at TIMESTAMPTZ;
