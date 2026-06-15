@@ -10,8 +10,8 @@ download-signal-cli:
 	rm /tmp/signal-cli.tar.gz
 
 install:
-	python -m venv .venv
+	python3 -m venv .venv
 	.venv/bin/pip install -r requirements.txt
 
-run:
+run: install
 	PATH=./bin:$$PATH .venv/bin/python -m summarizer_agent.main
