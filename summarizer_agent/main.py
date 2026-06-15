@@ -13,14 +13,14 @@ def main() -> None:
         print("No unsummarized articles found.", file=sys.stderr)
         return
 
-    collected: list[tuple[str, str, str]] = []
+    collected: list[tuple[str, str, str, object]] = []
 
-    for article_id, title, url in articles:
+    for article_id, title, url, published_date in articles:
         try:
             text = get_text(url)
             summary = summarize(text)
             store_summary(article_id, summary)
-            collected.append((title, url, summary))
+            collected.append((title, url, summary, published_date))
             print(f"OK  {url}", file=sys.stderr)
         except Exception as exc:
             print(f"SKIP {url}: {exc}", file=sys.stderr)

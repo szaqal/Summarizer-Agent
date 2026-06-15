@@ -3,12 +3,12 @@ import psycopg2
 from summarizer_agent.config import DATABASE_URL
 
 
-def fetch_unsummarized() -> list[tuple[int, str, str]]:
+def fetch_unsummarized() -> list[tuple[int, str, str, object]]:
     with psycopg2.connect(DATABASE_URL) as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "SELECT id, title, url FROM rss_items"
-                " WHERE summary IS NULL ORDER BY id LIMIT 20"
+                "SELECT id, title, url, published_date FROM rss_items"
+                " WHERE summary IS NULL ORDER BY id LIMIT 100"
             )
             return cur.fetchall()
 
