@@ -1,0 +1,2 @@
+ALTER TABLE rss_items
+  ADD COLUMN IF NOT EXISTS fetch_error TEXT;
