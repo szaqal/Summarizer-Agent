@@ -1,3 +1,3 @@
-ALTER TABLE articles
+ALTER TABLE rss_items
   ADD COLUMN IF NOT EXISTS summary       TEXT,
   ADD COLUMN IF NOT EXISTS summarized_at TIMESTAMPTZ;
