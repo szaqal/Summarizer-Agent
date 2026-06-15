@@ -1,4 +1,4 @@
-.PHONY: download-signal-cli install run
+.PHONY: download-signal-cli install register verify run
 
 SHELL := /bin/bash
 
@@ -14,6 +14,13 @@ download-signal-cli:
 install:
 	python3 -m venv .venv
 	.venv/bin/pip install -r requirements.txt
+
+register:
+	source .env && ./bin/signal-cli -a $$SIGNAL_SENDER register
+
+verify:
+	@test -n "$(CODE)" || (echo "Usage: make verify CODE=<verification-code>" && exit 1)
+	source .env && ./bin/signal-cli -a $$SIGNAL_SENDER verify $(CODE)
 
 run:
 	PATH=./bin:$$PATH .venv/bin/python -m summarizer_agent.main
