@@ -8,7 +8,9 @@ SIGNAL_CLI_URL     = https://github.com/AsamK/signal-cli/releases/download/v$(SI
 download-signal-cli:
 	mkdir -p bin
 	wget -O /tmp/signal-cli.tar.gz $(SIGNAL_CLI_URL)
-	tar -xzf /tmp/signal-cli.tar.gz -C bin --strip-components=1
+	tar -xzf /tmp/signal-cli.tar.gz -C bin/
+	mv bin/signal-cli-client bin/signal-cli
+	chmod +x bin/signal-cli
 	rm /tmp/signal-cli.tar.gz
 
 install:
