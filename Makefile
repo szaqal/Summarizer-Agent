@@ -1,5 +1,7 @@
 .PHONY: download-signal-cli install run
 
+SHELL := /bin/bash
+
 SIGNAL_CLI_VERSION = 0.14.5
 SIGNAL_CLI_URL     = https://github.com/AsamK/signal-cli/releases/download/v$(SIGNAL_CLI_VERSION)/signal-cli-$(SIGNAL_CLI_VERSION)-Linux-client.tar.gz
 
